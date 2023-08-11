@@ -18,3 +18,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_speed
+
+func receive_damage(amount):
+	print("ah shit...")
+	queue_free()
+
