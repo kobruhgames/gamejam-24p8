@@ -1,17 +1,21 @@
 [gd_scene load_steps=3 format=3 uid="uid://cgn1kb5xuewxr"]
 
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://player.tscn" id="1_etygs"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2ull"]
-size = Vector2(1142, 55)
+[ext_resource type="PackedScene" uid="uid://de50vddwswoq" path="res://world.tscn" id="2_20y4d"]
 
 [node name="main" type="Node2D"]
+position = Vector2(802, 672)
 
 [node name="PlayerBody" parent="." instance=ExtResource("1_etygs")]
-position = Vector2(577, 228)
+position = Vector2(-660, -438)
+scale = Vector2(0.5, 0.5)
+speed = 500
+jump_speed = -1100
+gravity = 3000
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="PlayerBody"]
+position = Vector2(360.059, -64.2961)
+scale = Vector2(4.28641, 4.28641)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(586, 619)
-shape = SubResource("RectangleShape2D_e2ull")
+[node name="world" parent="." instance=ExtResource("2_20y4d")]
+position = Vector2(-675, -307)
