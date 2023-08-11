@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var health = 100
 @export var speed = 1200
 @export var jump_speed = -1800
 @export var gravity = 4000
@@ -35,6 +36,7 @@ func _physics_process(delta):
 		bomb.apply_central_impulse(direction * 350)
 
 func receive_damage(amount):
-	print("ah shit...")
-	queue_free()
-
+	health -= amount
+	print(health)
+	if health < 0:
+		queue_free();

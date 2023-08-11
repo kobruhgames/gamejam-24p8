@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dppn2x537dskf"]
 
 [ext_resource type="Script" path="res://PlayerBody.gd" id="1_3sclm"]
-[ext_resource type="Texture2D" uid="uid://b22ie1sdqsjgx" path="res://icon.svg" id="1_d51uh"]
+[ext_resource type="Texture2D" uid="uid://b6o2ligl301jf" path="res://white cat walk right frame 1 sprite.png" id="2_u5yf6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
 size = Vector2(128, 128)
@@ -10,7 +10,8 @@ size = Vector2(128, 128)
 script = ExtResource("1_3sclm")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_d51uh")
+scale = Vector2(4.04, 4.04)
+texture = ExtResource("2_u5yf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4uknh")

@@ -22,4 +22,4 @@ scale = Vector2(4.28641, 4.28641)
 position = Vector2(-675, -307)
 
 [node name="bomb" parent="." instance=ExtResource("3_yklqc")]
-position = Vector2(-655, -532)
+position = Vector2(-468, -653)
