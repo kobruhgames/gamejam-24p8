@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwwy2u5m56hrc"]
+
+[ext_resource type="Script" path="res://HealthMeter.gd" id="1_midak"]
+
+[node name="gameui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HealthMeter" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 50.0
+script = ExtResource("1_midak")
+
+[node name="Label" type="Label" parent="HealthMeter"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 11.0
+offset_right = 116.0
+offset_bottom = 37.0
+text = "HEALTH: 100"

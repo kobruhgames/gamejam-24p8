@@ -10,6 +10,8 @@ extends CharacterBody2D
 const Bomb = preload("res://bomb.tscn")
 var lastDir = 0;
 
+signal health_lost;
+
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	var dir = Input.get_axis("ui_left", "ui_right")
@@ -38,5 +40,6 @@ func _physics_process(delta):
 func receive_damage(amount):
 	health -= amount
 	print(health)
+	health_lost.emit(health)
 	if health < 0:
 		queue_free();
