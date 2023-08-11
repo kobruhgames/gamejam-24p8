@@ -325,11 +325,6 @@ texture_region_size = Vector2i(64, 64)
 0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:4/0/physics_layer_0/angular_velocity = 0.0
 0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
-1:4/0 = 0
-1:4/0/terrain_set = 0
-1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:4/0/physics_layer_0/angular_velocity = 0.0
-1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 2:4/0 = 0
 2:4/0/terrain_set = 0
 2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
@@ -890,6 +885,7 @@ sources/42 = SubResource("TileSetAtlasSource_fct5o")
 [node name="world" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
+position = Vector2(-35, -65)
 tile_set = SubResource("TileSet_d3tr4")
 format = 2
 layer_0/name = "foreground"
