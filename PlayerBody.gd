@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@export var health = 3
+@export var health = 4
+@export var bombs = 3
 @export var speed = 1200
 @export var jump_speed = -1800
 @export var gravity = 4000
@@ -40,6 +41,9 @@ func receive_damage(amount):
 		var tween = get_tree().create_tween()
 		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 0, 0, 0.5), 0.1)
 		tween.tween_property($AnimatedSprite2D, "modulate", original_color, 0.1).set_delay(0.1)
+
+func add_bombs(amount):
+	bombs += amount
 
 # =============================
 # PRIVATE
@@ -102,7 +106,8 @@ func _handle_jump():
 		velocity.y = jump_speed
 
 func _handle_bomb_throw():
-	if Input.is_action_just_pressed("spawn_bomb"):
+	if Input.is_action_just_pressed("spawn_bomb") && bombs > 0:
+		bombs -= 1
 		var bomb = Bomb.instantiate()
 		var direction 
 		if last_direction > 0:  # player is looking to the right

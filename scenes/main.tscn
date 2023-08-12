@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cgn1kb5xuewxr"]
+[gd_scene load_steps=9 format=3 uid="uid://cgn1kb5xuewxr"]
 
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="1_etygs"]
 [ext_resource type="Texture2D" uid="uid://boc7o5t853wkd" path="res://tilesheet_sample.png" id="2_x0um8"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="4_1808m"]
+[ext_resource type="PackedScene" uid="uid://cq85uw43cjteq" path="res://scenes/single_bomb_pickup.tscn" id="5_i5xp2"]
 [ext_resource type="PackedScene" uid="uid://bsuhii80gjs86" path="res://scenes/ratto.tscn" id="5_jn1dv"]
+[ext_resource type="PackedScene" uid="uid://0ada4scki8l6" path="res://scenes/three_bombs_pickup.tscn" id="6_hjynf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fct5o"]
 texture = ExtResource("2_x0um8")
@@ -917,8 +919,38 @@ offset_right = -133.771
 offset_bottom = -102.708
 
 [node name="rat1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
-position = Vector2(-427, -498)
+position = Vector2(-353, -430)
 scale = Vector2(1.64504, 1.64504)
 player = NodePath("../PlayerBody")
+
+[node name="rat2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+position = Vector2(505, -112)
+scale = Vector2(1.64504, 1.64504)
+player = NodePath("../PlayerBody")
+
+[node name="rat3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+position = Vector2(601, -112)
+scale = Vector2(1.64504, 1.64504)
+player = NodePath("../PlayerBody")
+
+[node name="rat4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+position = Vector2(1267, 86)
+scale = Vector2(1.64504, 1.64504)
+player = NodePath("../PlayerBody")
+
+[node name="single_bomb_pickup" parent="." instance=ExtResource("5_i5xp2")]
+position = Vector2(-528, -454)
+
+[node name="single_bomb_pickup2" parent="." instance=ExtResource("5_i5xp2")]
+position = Vector2(-408, -651)
+
+[node name="single_bomb_pickup3" parent="." instance=ExtResource("5_i5xp2")]
+position = Vector2(-282, -651)
+
+[node name="single_bomb_pickup4" parent="." instance=ExtResource("5_i5xp2")]
+position = Vector2(76, -584)
+
+[node name="single_bomb_pickup5" parent="." instance=ExtResource("6_hjynf")]
+position = Vector2(92, -334)
 
 [connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/HealthContainer" method="_on_player_body_health_lost"]

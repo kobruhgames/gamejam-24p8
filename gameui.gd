@@ -1,9 +1,12 @@
 extends HBoxContainer
 
-@export var MaxHealth = 3;
+@export var MaxHealth = 4;
 
 var heart_full = preload("res://heart.png")
 var heart_broken = preload("res://heart_broken.png")
+
+func _ready():
+	_on_player_body_health_lost(MaxHealth)
 
 func _on_player_body_health_lost(new_health):
 	for child in get_children():

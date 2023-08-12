@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://0ada4scki8l6"]
+
+[ext_resource type="Script" path="res://scenes/single_bomb_pickup.gd" id="1_i7pd8"]
+[ext_resource type="PackedScene" uid="uid://ctlxhdh75rhxr" path="res://scenes/bomb_pickup.tscn" id="2_g3722"]
+[ext_resource type="Texture2D" uid="uid://bp7p4n3knj51o" path="res://art/cat/bomb/bomb_1.png" id="3_bbwps"]
+
+[node name="single_bomb_pickup" type="Node2D"]
+script = ExtResource("1_i7pd8")
+
+[node name="Area2D" parent="." instance=ExtResource("2_g3722")]
+number_of_bombs = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = -0.261799
+texture = ExtResource("3_bbwps")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(2, 3)
+rotation = -0.261799
+texture = ExtResource("3_bbwps")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-6, 1)
+texture = ExtResource("3_bbwps")
+
+[connection signal="on_picked_up" from="Area2D" to="." method="_on_area_2d_on_picked_up"]
