@@ -12,7 +12,7 @@ const BOMB_IMPULSE = 350
 const HORIZONTAL_DIR_STOP = 0
 const PEAK_FRAME_DURATION = 100
 
-const Bomb = preload("res://bomb.tscn")
+const Bomb = preload("res://scenes/bomb.tscn")
 var last_direction = 0;
 
 signal health_lost;
