@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://benotda8wfjax"
-path="res://.godot/imported/white cat run left frame 2 sprite.png-0eb36d6b2ab9cce846d41476e4b7de1c.ctex"
+uid="uid://cxwjwgqrmdljw"
+path="res://.godot/imported/cat_run_left_2.png-af94c832b21ddb8de237761813ad7464.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://white cat run left frame 2 sprite.png"
-dest_files=["res://.godot/imported/white cat run left frame 2 sprite.png-0eb36d6b2ab9cce846d41476e4b7de1c.ctex"]
+source_file="res://art/cat/run/cat_run_left_2.png"
+dest_files=["res://.godot/imported/cat_run_left_2.png-af94c832b21ddb8de237761813ad7464.ctex"]
 
 [params]
 

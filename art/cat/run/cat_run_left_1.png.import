@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dqjdhel3ond12"
-path="res://.godot/imported/white cat run right frame 3 sprite.png-c0503367da0a4cd80f7b2f703943d822.ctex"
+uid="uid://k840miylewgu"
+path="res://.godot/imported/cat_run_left_1.png-4b4615680a7f87a1cb4fc1628c96a10d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://white cat run right frame 3 sprite.png"
-dest_files=["res://.godot/imported/white cat run right frame 3 sprite.png-c0503367da0a4cd80f7b2f703943d822.ctex"]
+source_file="res://art/cat/run/cat_run_left_1.png"
+dest_files=["res://.godot/imported/cat_run_left_1.png-4b4615680a7f87a1cb4fc1628c96a10d.ctex"]
 
 [params]
 

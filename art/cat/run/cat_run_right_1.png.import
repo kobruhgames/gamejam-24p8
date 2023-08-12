@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://esgumisifkpc"
-path="res://.godot/imported/white cat walk right frame 1 sprite2.png-ba75e69c239322e3f5d657aebca88b84.ctex"
+uid="uid://wiy5wmivjdvp"
+path="res://.godot/imported/cat_run_right_1.png-edb3f6f43dcf7f086b47373afa4bab69.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://white cat walk right frame 1 sprite2.png"
-dest_files=["res://.godot/imported/white cat walk right frame 1 sprite2.png-ba75e69c239322e3f5d657aebca88b84.ctex"]
+source_file="res://art/cat/run/cat_run_right_1.png"
+dest_files=["res://.godot/imported/cat_run_right_1.png-edb3f6f43dcf7f086b47373afa4bab69.ctex"]
 
 [params]
 

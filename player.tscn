@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://dppn2x537dskf"]
 
 [ext_resource type="Script" path="res://PlayerBody.gd" id="1_3sclm"]
-[ext_resource type="Texture2D" uid="uid://b6o2ligl301jf" path="res://white cat walk right frame 1 sprite.png" id="2_u5yf6"]
-[ext_resource type="Texture2D" uid="uid://c5qm0rpuafxs1" path="res://white cat sitting tail on right sprite-ex.png" id="3_f4u1n"]
-[ext_resource type="Texture2D" uid="uid://bt3q2lfdxeuww" path="res://white cat walk right frame 2 sprite and idle pose.png" id="3_ffqc5"]
-[ext_resource type="Texture2D" uid="uid://vfa6btan2myt" path="res://white cat walk right frame 3 sprite.png" id="4_1wpwn"]
-[ext_resource type="Texture2D" uid="uid://8qfb4o053s8g" path="res://white cat sitting tail on right sprite.png" id="4_pk2ky"]
+[ext_resource type="Texture2D" uid="uid://b8ba8gtq7p8ru" path="res://art/cat/sit/cat_sit_right_1.png" id="3_53pmx"]
+[ext_resource type="Texture2D" uid="uid://cd6r6n06eb0n1" path="res://art/cat/walk/cat_walk_right_1.png" id="3_f46ry"]
+[ext_resource type="Texture2D" uid="uid://c6wf0xp6k6u8s" path="res://art/cat/sit/cat_sit_right_forward.png" id="4_bybos"]
+[ext_resource type="Texture2D" uid="uid://bldbk0irxwoj2" path="res://art/cat/walk/cat_walk_right_2.png" id="4_f0ako"]
+[ext_resource type="Texture2D" uid="uid://bgoemfg17udyw" path="res://art/cat/walk/cat_walk_right_3.png" id="5_hcxxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
 size = Vector2(128, 128)
@@ -14,10 +14,10 @@ size = Vector2(128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_f4u1n")
+"texture": ExtResource("3_53pmx")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_pk2ky")
+"texture": ExtResource("4_bybos")
 }],
 "loop": true,
 "name": &"sit_right",
@@ -25,29 +25,24 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_u5yf6")
+"texture": ExtResource("3_f46ry")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ffqc5")
+"texture": ExtResource("4_f0ako")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_1wpwn")
+"texture": ExtResource("5_hcxxc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ffqc5")
+"texture": ExtResource("4_f0ako")
 }],
 "loop": true,
 "name": &"walk_right",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [node name="PlayerBody" type="CharacterBody2D"]
 script = ExtResource("1_3sclm")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(4.04, 4.04)
-texture = ExtResource("2_u5yf6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4uknh")
@@ -55,8 +50,8 @@ shape = SubResource("RectangleShape2D_4uknh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3.9375, 3.9375)
 sprite_frames = SubResource("SpriteFrames_v1ls8")
-animation = &"walk_right"
-frame_progress = 0.994641
+animation = &"sit_right"
+frame_progress = 0.367348
 
 [node name="IdleAnimationTimer" type="Timer" parent="."]
 wait_time = 4.0
