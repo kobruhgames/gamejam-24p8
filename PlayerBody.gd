@@ -14,6 +14,7 @@ const PEAK_FRAME_DURATION = 100
 
 const Bomb = preload("res://scenes/bomb.tscn")
 var last_direction = 0;
+var original_color;
 
 signal health_lost;
 
@@ -21,15 +22,15 @@ signal health_lost;
 # PUBLIC
 # =============================
 func receive_damage(amount):
-	var tween = get_tree().create_tween()
 	health -= amount
 	health_lost.emit(health)
 	if health <= 0:
-		tween.tween_property($AnimatedSprite2D, "modulate", Color.RED, 1)
-		tween.tween_property($AnimatedSprite2D, "scale", Vector2(), 1)
-		tween.tween_callback(queue_free)
+		$AnimatedSprite2D.stop()
+		$IdleAnimationTimer.stop()
+		$AnimatedSprite2D.connect("animation_looped", queue_free)
+		$AnimatedSprite2D.play("death")
 	else:
-		var original_color = $AnimatedSprite2D.modulate
+		var tween = get_tree().create_tween()
 		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 0, 0, 0.5), 0.1)
 		tween.tween_property($AnimatedSprite2D, "modulate", original_color, 0.1).set_delay(0.1)
 
@@ -37,18 +38,23 @@ func receive_damage(amount):
 # PRIVATE
 # =============================
 func _ready():
-	$IdleAnimationTimer.connect("timeout", _on_idle_triggered);
+	$IdleAnimationTimer.connect("timeout", _on_idle_triggered)
+	original_color = $AnimatedSprite2D.modulate
 
 func _physics_process(delta):
 	_apply_gravity(delta)
 	var input_horizontal_direction = _read_input_horizontal_direction()
-	_update_animation(input_horizontal_direction, delta)
-	if input_horizontal_direction == HORIZONTAL_DIR_STOP:
-		_apply_stop_force()
+	
+	if health > 0:
+		_update_animation(input_horizontal_direction, delta)
+		if input_horizontal_direction == HORIZONTAL_DIR_STOP:
+			_apply_stop_force()
+		else:
+			_apply_horizontal_force(input_horizontal_direction * speed)
+		_handle_jump()
+		_handle_bomb_throw()
 	else:
-		_apply_horizontal_force(input_horizontal_direction * speed)
-	_handle_jump()
-	_handle_bomb_throw()
+		_apply_stop_force()
 	move_and_slide()
 
 func _apply_gravity(delta):

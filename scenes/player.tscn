@@ -1,20 +1,41 @@
-[gd_scene load_steps=12 format=3 uid="uid://dppn2x537dskf"]
+[gd_scene load_steps=16 format=3 uid="uid://dppn2x537dskf"]
 
 [ext_resource type="Script" path="res://PlayerBody.gd" id="1_3sclm"]
+[ext_resource type="Texture2D" uid="uid://bkmqd6knaudrk" path="res://art/cat/death/cat_death_1_right.png" id="2_16txf"]
 [ext_resource type="Texture2D" uid="uid://bknmw22hmmsat" path="res://art/cat/run/cat_run_right_3.png" id="2_of5vn"]
 [ext_resource type="Texture2D" uid="uid://161cx50kkxy" path="res://art/cat/run/cat_run_right_2.png" id="3_6imgm"]
 [ext_resource type="Texture2D" uid="uid://wiy5wmivjdvp" path="res://art/cat/run/cat_run_right_1.png" id="3_6nve8"]
 [ext_resource type="Texture2D" uid="uid://b8ba8gtq7p8ru" path="res://art/cat/sit/cat_sit_right_1.png" id="3_53pmx"]
 [ext_resource type="Texture2D" uid="uid://cd6r6n06eb0n1" path="res://art/cat/walk/cat_walk_right_1.png" id="3_f46ry"]
+[ext_resource type="Texture2D" uid="uid://c72gmghpwxsve" path="res://art/cat/death/cat_death_2_right.png" id="3_qqky6"]
 [ext_resource type="Texture2D" uid="uid://c6wf0xp6k6u8s" path="res://art/cat/sit/cat_sit_right_forward.png" id="4_bybos"]
 [ext_resource type="Texture2D" uid="uid://bldbk0irxwoj2" path="res://art/cat/walk/cat_walk_right_2.png" id="4_f0ako"]
+[ext_resource type="Texture2D" uid="uid://b5kg6o3u20h1k" path="res://art/cat/death/cat_death_3_right.png" id="4_rf25x"]
 [ext_resource type="Texture2D" uid="uid://bgoemfg17udyw" path="res://art/cat/walk/cat_walk_right_3.png" id="5_hcxxc"]
+[ext_resource type="Texture2D" uid="uid://6n0s61xp1reb" path="res://art/cat/death/cat_death_4_right.png" id="5_y0hda"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
 size = Vector2(128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v1ls8"]
 animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_16txf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qqky6")
+}, {
+"duration": 4.0,
+"texture": ExtResource("4_rf25x")
+}, {
+"duration": 10.0,
+"texture": ExtResource("5_y0hda")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_of5vn")
@@ -77,8 +98,9 @@ shape = SubResource("RectangleShape2D_4uknh")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(3.9375, 3.9375)
 sprite_frames = SubResource("SpriteFrames_v1ls8")
-animation = &"jump_peak_right"
+animation = &"death"
 autoplay = "sit_right"
+frame_progress = 0.62312
 
 [node name="IdleAnimationTimer" type="Timer" parent="."]
 wait_time = 4.0
