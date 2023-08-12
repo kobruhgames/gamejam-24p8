@@ -39,7 +39,6 @@ func _physics_process(delta):
 
 func receive_damage(amount):
 	health -= amount
-	print(health)
 	health_lost.emit(health)
 	if health <= 0:
 		queue_free();

@@ -917,6 +917,5 @@ offset_left = -261.771
 offset_top = -142.708
 offset_right = -133.771
 offset_bottom = -102.708
-MaxHealth = 3
 
 [connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/HealthContainer" method="_on_player_body_health_lost"]

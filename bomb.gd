@@ -9,4 +9,3 @@ func _on_timer_finished():
 		if body.has_method("receive_damage"):
 			body.receive_damage(1)
 	queue_free()
-	print("boom");
