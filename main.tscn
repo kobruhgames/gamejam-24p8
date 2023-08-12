@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://player.tscn" id="1_etygs"]
 [ext_resource type="Texture2D" uid="uid://boc7o5t853wkd" path="res://tilesheet_sample.png" id="2_x0um8"]
 [ext_resource type="PackedScene" uid="uid://bixsnhje1tx02" path="res://bomb.tscn" id="3_yklqc"]
-[ext_resource type="Script" path="res://HealthMeter.gd" id="4_j4wwq"]
+[ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://gameui.tscn" id="4_1808m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fct5o"]
 texture = ExtResource("2_x0um8")
@@ -912,30 +912,11 @@ gravity = 3000
 position = Vector2(360.059, -64.2961)
 scale = Vector2(4.28641, 4.28641)
 
-[node name="gameui" type="Control" parent="PlayerBody/Camera2D"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="HealthContainer" parent="PlayerBody/Camera2D" instance=ExtResource("4_1808m")]
 offset_left = -261.771
-offset_top = -143.641
-offset_right = -261.771
-offset_bottom = -143.641
-grow_horizontal = 2
-grow_vertical = 2
+offset_top = -142.708
+offset_right = -133.771
+offset_bottom = -102.708
+MaxHealth = 3
 
-[node name="HealthMeter" type="Panel" parent="PlayerBody/Camera2D/gameui"]
-layout_mode = 0
-offset_right = 139.0
-offset_bottom = 50.0
-script = ExtResource("4_j4wwq")
-
-[node name="Label" type="Label" parent="PlayerBody/Camera2D/gameui/HealthMeter"]
-layout_mode = 0
-offset_left = 18.0
-offset_top = 11.0
-offset_right = 116.0
-offset_bottom = 37.0
-text = "HEALTH: 100"
-
-[connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/gameui/HealthMeter" method="_on_player_body_health_lost"]
+[connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/HealthContainer" method="_on_player_body_health_lost"]

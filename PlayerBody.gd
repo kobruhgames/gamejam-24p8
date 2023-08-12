@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var health = 100
+@export var health = 3
 @export var speed = 1200
 @export var jump_speed = -1800
 @export var gravity = 4000
@@ -41,5 +41,5 @@ func receive_damage(amount):
 	health -= amount
 	print(health)
 	health_lost.emit(health)
-	if health < 0:
+	if health <= 0:
 		queue_free();
