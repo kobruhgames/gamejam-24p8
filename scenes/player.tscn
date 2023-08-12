@@ -100,7 +100,7 @@ scale = Vector2(3.9375, 3.9375)
 sprite_frames = SubResource("SpriteFrames_v1ls8")
 animation = &"death"
 autoplay = "sit_right"
-frame_progress = 0.62312
+frame_progress = 0.278455
 
 [node name="IdleAnimationTimer" type="Timer" parent="."]
 wait_time = 4.0
