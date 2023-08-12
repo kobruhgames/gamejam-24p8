@@ -21,10 +21,17 @@ signal health_lost;
 # PUBLIC
 # =============================
 func receive_damage(amount):
+	var tween = get_tree().create_tween()
 	health -= amount
 	health_lost.emit(health)
 	if health <= 0:
-		queue_free();
+		tween.tween_property($AnimatedSprite2D, "modulate", Color.RED, 1)
+		tween.tween_property($AnimatedSprite2D, "scale", Vector2(), 1)
+		tween.tween_callback(queue_free)
+	else:
+		var original_color = $AnimatedSprite2D.modulate
+		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 0, 0, 0.5), 0.1)
+		tween.tween_property($AnimatedSprite2D, "modulate", original_color, 0.1).set_delay(0.1)
 
 # =============================
 # PRIVATE
