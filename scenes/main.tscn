@@ -1,12 +1,26 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgn1kb5xuewxr"]
+[gd_scene load_steps=26 format=3 uid="uid://cgn1kb5xuewxr"]
 
+[ext_resource type="Script" path="res://scenes/MultiTargetCamera2D.gd" id="1_am518"]
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="1_etygs"]
 [ext_resource type="Texture2D" uid="uid://boc7o5t853wkd" path="res://tilesheet_sample.png" id="2_x0um8"]
 [ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="3_k8ikd"]
+[ext_resource type="Script" path="res://PlayerBody.gd" id="3_ndx3a"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="4_1808m"]
+[ext_resource type="Texture2D" uid="uid://bkmqd6knaudrk" path="res://art/cat/death/cat_death_1_right.png" id="4_ajcpw"]
 [ext_resource type="PackedScene" uid="uid://cq85uw43cjteq" path="res://scenes/single_bomb_pickup.tscn" id="5_i5xp2"]
 [ext_resource type="PackedScene" uid="uid://bsuhii80gjs86" path="res://scenes/ratto.tscn" id="5_jn1dv"]
+[ext_resource type="Texture2D" uid="uid://c72gmghpwxsve" path="res://art/cat/death/cat_death_2_right.png" id="5_u8rjf"]
+[ext_resource type="Texture2D" uid="uid://b5kg6o3u20h1k" path="res://art/cat/death/cat_death_3_right.png" id="6_bd0wa"]
 [ext_resource type="PackedScene" uid="uid://0ada4scki8l6" path="res://scenes/three_bombs_pickup.tscn" id="6_hjynf"]
+[ext_resource type="Texture2D" uid="uid://6n0s61xp1reb" path="res://art/cat/death/cat_death_4_right.png" id="7_lb6eu"]
+[ext_resource type="Texture2D" uid="uid://bknmw22hmmsat" path="res://art/cat/run/cat_run_right_3.png" id="8_h4rqx"]
+[ext_resource type="Texture2D" uid="uid://161cx50kkxy" path="res://art/cat/run/cat_run_right_2.png" id="9_vt2ys"]
+[ext_resource type="Texture2D" uid="uid://wiy5wmivjdvp" path="res://art/cat/run/cat_run_right_1.png" id="10_aabb1"]
+[ext_resource type="Texture2D" uid="uid://b8ba8gtq7p8ru" path="res://art/cat/sit/cat_sit_right_1.png" id="11_neus2"]
+[ext_resource type="Texture2D" uid="uid://c6wf0xp6k6u8s" path="res://art/cat/sit/cat_sit_right_forward.png" id="12_2geer"]
+[ext_resource type="Texture2D" uid="uid://cd6r6n06eb0n1" path="res://art/cat/walk/cat_walk_right_1.png" id="13_oe5im"]
+[ext_resource type="Texture2D" uid="uid://bldbk0irxwoj2" path="res://art/cat/walk/cat_walk_right_2.png" id="14_unum7"]
+[ext_resource type="Texture2D" uid="uid://bgoemfg17udyw" path="res://art/cat/walk/cat_walk_right_3.png" id="15_lc0hn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fct5o"]
 texture = ExtResource("2_x0um8")
@@ -889,6 +903,81 @@ terrain_set_0/terrain_0/name = "Default Terrain"
 terrain_set_0/terrain_0/color = Color(0.466667, 0.698039, 0.909804, 1)
 sources/42 = SubResource("TileSetAtlasSource_fct5o")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
+size = Vector2(128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ls8"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("4_ajcpw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u8rjf")
+}, {
+"duration": 4.0,
+"texture": ExtResource("6_bd0wa")
+}, {
+"duration": 10.0,
+"texture": ExtResource("7_lb6eu")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_h4rqx")
+}],
+"loop": true,
+"name": &"jump_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_vt2ys")
+}],
+"loop": true,
+"name": &"jump_peak_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_aabb1")
+}],
+"loop": true,
+"name": &"jump_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_neus2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_2geer")
+}],
+"loop": true,
+"name": &"sit_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_oe5im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_unum7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_lc0hn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_unum7")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}]
+
 [node name="main" type="Node2D"]
 position = Vector2(802, 672)
 
@@ -909,21 +998,64 @@ speed = 500
 jump_speed = -1100
 gravity = 3000
 
-[node name="Camera2D" type="Camera2D" parent="PlayerBody"]
-position = Vector2(360.059, -64.2961)
-scale = Vector2(4.28641, 4.28641)
+[node name="HealthContainer" parent="PlayerBody" instance=ExtResource("4_1808m")]
+offset_left = -46.0
+offset_top = -104.0
+offset_right = 58.0
+offset_bottom = -72.0
 
-[node name="bomb_counter" parent="PlayerBody/Camera2D" instance=ExtResource("3_k8ikd")]
-offset_left = 189.422
-offset_top = -142.708
-offset_right = 189.422
-offset_bottom = -142.708
+[node name="bomb_counter" parent="PlayerBody" instance=ExtResource("3_k8ikd")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -14.0
+offset_top = -152.0
+offset_right = -14.0
+offset_bottom = -152.0
+grow_horizontal = 1
+grow_vertical = 1
 
-[node name="HealthContainer" parent="PlayerBody/Camera2D" instance=ExtResource("4_1808m")]
-offset_left = -261.771
-offset_top = -142.708
-offset_right = -133.771
-offset_bottom = -102.708
+[node name="PlayerBody2" type="CharacterBody2D" parent="."]
+self_modulate = Color(0, 0.827451, 0.827451, 1)
+position = Vector2(-782, -492)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("3_ndx3a")
+speed = 500
+jump_speed = -1100
+gravity = 3000
+player = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerBody2"]
+shape = SubResource("RectangleShape2D_4uknh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerBody2"]
+modulate = Color(0.207843, 1, 1, 1)
+scale = Vector2(3.9375, 3.9375)
+sprite_frames = SubResource("SpriteFrames_v1ls8")
+animation = &"death"
+autoplay = "sit_right"
+frame_progress = 0.386856
+
+[node name="IdleAnimationTimer" type="Timer" parent="PlayerBody2"]
+wait_time = 4.0
+autostart = true
+
+[node name="HealthContainer2" parent="PlayerBody2" instance=ExtResource("4_1808m")]
+offset_left = -48.0
+offset_top = -104.0
+offset_right = 56.0
+offset_bottom = -72.0
+
+[node name="bomb_counter2" parent="PlayerBody2" instance=ExtResource("3_k8ikd")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -28.0
+offset_top = -152.0
+offset_right = -28.0
+offset_bottom = -152.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="rat1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
 position = Vector2(-353, -430)
@@ -960,5 +1092,14 @@ position = Vector2(76, -584)
 [node name="single_bomb_pickup5" parent="." instance=ExtResource("6_hjynf")]
 position = Vector2(92, -334)
 
-[connection signal="bomb_count_changed" from="PlayerBody" to="PlayerBody/Camera2D/bomb_counter" method="set_value"]
-[connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/HealthContainer" method="_on_player_body_health_lost"]
+[node name="Camera2D" type="Camera2D" parent="." node_paths=PackedStringArray("target1", "target2")]
+position = Vector2(-529.971, -524.148)
+scale = Vector2(2.1432, 2.1432)
+script = ExtResource("1_am518")
+target1 = NodePath("../PlayerBody")
+target2 = NodePath("../PlayerBody2")
+
+[connection signal="bomb_count_changed" from="PlayerBody" to="PlayerBody/bomb_counter" method="set_value"]
+[connection signal="health_lost" from="PlayerBody" to="PlayerBody/HealthContainer" method="_on_player_body_health_lost"]
+[connection signal="bomb_count_changed" from="PlayerBody2" to="PlayerBody2/bomb_counter2" method="set_value"]
+[connection signal="health_lost" from="PlayerBody2" to="PlayerBody2/HealthContainer2" method="_on_player_body_health_lost"]
