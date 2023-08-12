@@ -21,6 +21,13 @@ signal health_lost;
 # =============================
 # PUBLIC
 # =============================
+func is_alive():
+	return health > 0
+
+func receive_enemy_damage(amount):
+	if health > 0:
+		receive_damage(amount)
+
 func receive_damage(amount):
 	health -= amount
 	health_lost.emit(health)

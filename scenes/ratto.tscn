@@ -1,0 +1,139 @@
+[gd_scene load_steps=20 format=3 uid="uid://bsuhii80gjs86"]
+
+[ext_resource type="Texture2D" uid="uid://dm6m2hlb1spu0" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Death.png" id="1_1yf0s"]
+[ext_resource type="Script" path="res://scenes/ratto.gd" id="1_tx0af"]
+[ext_resource type="Texture2D" uid="uid://hxk67njwj3w2" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Idle.png" id="2_ws052"]
+[ext_resource type="Texture2D" uid="uid://dgpe7rum1h6as" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Walk.png" id="3_mh4p6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s3rkx"]
+size = Vector2(22, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2l4c"]
+atlas = ExtResource("1_1yf0s")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dgj3g"]
+atlas = ExtResource("1_1yf0s")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtmq3"]
+atlas = ExtResource("1_1yf0s")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0fax5"]
+atlas = ExtResource("1_1yf0s")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r0y6"]
+atlas = ExtResource("2_ws052")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pod1r"]
+atlas = ExtResource("2_ws052")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r4lqf"]
+atlas = ExtResource("2_ws052")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45u18"]
+atlas = ExtResource("2_ws052")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2q8u"]
+atlas = ExtResource("3_mh4p6")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7r7rl"]
+atlas = ExtResource("3_mh4p6")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p30he"]
+atlas = ExtResource("3_mh4p6")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u8vpt"]
+atlas = ExtResource("3_mh4p6")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1i1ju"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2l4c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dgj3g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtmq3")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_0fax5")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r0y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pod1r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4lqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45u18")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2q8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7r7rl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p30he")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u8vpt")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbydr"]
+radius = 18.2483
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_tx0af")
+
+[node name="HurtTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 11)
+shape = SubResource("RectangleShape2D_s3rkx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1i1ju")
+animation = &"death"
+autoplay = "idle"
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 8)
+shape = SubResource("CircleShape2D_bbydr")
+
+[connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]

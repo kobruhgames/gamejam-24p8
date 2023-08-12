@@ -28,6 +28,8 @@ texture = ExtResource("2_v7jku")
 [node name="ExplosionRadius" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionRadius"]
+light_mask = 3
+visibility_layer = 3
 shape = SubResource("CircleShape2D_xqb17")
 
 [node name="Particles" parent="." instance=ExtResource("2_u7kvc")]
