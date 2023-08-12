@@ -1,10 +1,10 @@
 [gd_scene load_steps=5 format=3 uid="uid://bixsnhje1tx02"]
 
 [ext_resource type="Script" path="res://bomb.gd" id="1_7oqv5"]
-[ext_resource type="Texture2D" uid="uid://bsbhjscb5cmwu" path="res://bomb.png" id="2_6ofes"]
+[ext_resource type="Texture2D" uid="uid://bp7p4n3knj51o" path="res://art/cat/bomb/bomb_1.png" id="2_6s12m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kab8c"]
-radius = 22.0227
+radius = 11.1803
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xqb17"]
 radius = 116.069
@@ -21,7 +21,7 @@ autostart = true
 shape = SubResource("CircleShape2D_kab8c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6ofes")
+texture = ExtResource("2_6s12m")
 
 [node name="ExplosionRadius" type="Area2D" parent="."]
 
