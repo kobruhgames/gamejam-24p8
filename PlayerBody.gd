@@ -83,7 +83,6 @@ func _handle_jump():
 
 func _handle_bomb_throw():
 	if Input.is_action_just_pressed("spawn_bomb"):
-		print("direction: ", last_direction)
 		var bomb = Bomb.instantiate()
 		var direction 
 		if last_direction > 0:  # player is looking to the right
