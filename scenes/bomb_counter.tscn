@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://c60w5ehcy7765"]
+
+[ext_resource type="Texture2D" uid="uid://bp7p4n3knj51o" path="res://art/cat/bomb/bomb_1.png" id="1_fdyga"]
+[ext_resource type="Script" path="res://scenes/bomb_counter.gd" id="1_rak50"]
+
+[node name="bomb_counter" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rak50")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_fdyga")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 8.0
+offset_right = 85.0
+offset_bottom = 34.0
+text = "3"

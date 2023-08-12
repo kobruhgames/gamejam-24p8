@@ -18,6 +18,7 @@ var last_direction = 0;
 var original_color;
 
 signal health_lost;
+signal bomb_count_changed;
 
 # =============================
 # PUBLIC
@@ -44,6 +45,7 @@ func receive_damage(amount):
 
 func add_bombs(amount):
 	bombs += amount
+	bomb_count_changed.emit(bombs)
 
 # =============================
 # PRIVATE
@@ -108,6 +110,7 @@ func _handle_jump():
 func _handle_bomb_throw():
 	if Input.is_action_just_pressed("spawn_bomb") && bombs > 0:
 		bombs -= 1
+		bomb_count_changed.emit(bombs)
 		var bomb = Bomb.instantiate()
 		var direction 
 		if last_direction > 0:  # player is looking to the right

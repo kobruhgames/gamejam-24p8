@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cgn1kb5xuewxr"]
+[gd_scene load_steps=10 format=3 uid="uid://cgn1kb5xuewxr"]
 
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="1_etygs"]
 [ext_resource type="Texture2D" uid="uid://boc7o5t853wkd" path="res://tilesheet_sample.png" id="2_x0um8"]
+[ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="3_k8ikd"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="4_1808m"]
 [ext_resource type="PackedScene" uid="uid://cq85uw43cjteq" path="res://scenes/single_bomb_pickup.tscn" id="5_i5xp2"]
 [ext_resource type="PackedScene" uid="uid://bsuhii80gjs86" path="res://scenes/ratto.tscn" id="5_jn1dv"]
@@ -912,6 +913,12 @@ gravity = 3000
 position = Vector2(360.059, -64.2961)
 scale = Vector2(4.28641, 4.28641)
 
+[node name="bomb_counter" parent="PlayerBody/Camera2D" instance=ExtResource("3_k8ikd")]
+offset_left = 189.422
+offset_top = -142.708
+offset_right = 189.422
+offset_bottom = -142.708
+
 [node name="HealthContainer" parent="PlayerBody/Camera2D" instance=ExtResource("4_1808m")]
 offset_left = -261.771
 offset_top = -142.708
@@ -953,4 +960,5 @@ position = Vector2(76, -584)
 [node name="single_bomb_pickup5" parent="." instance=ExtResource("6_hjynf")]
 position = Vector2(92, -334)
 
+[connection signal="bomb_count_changed" from="PlayerBody" to="PlayerBody/Camera2D/bomb_counter" method="set_value"]
 [connection signal="health_lost" from="PlayerBody" to="PlayerBody/Camera2D/HealthContainer" method="_on_player_body_health_lost"]
