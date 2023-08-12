@@ -14,4 +14,4 @@ func _on_timer_finished():
 
 func _physics_process(delta):
 	var time_left_percentage = $Timer.get_time_left() / $Timer.get_wait_time()
-	$Sprite2D.modulate = Color(1 - time_left_percentage, time_left_percentage, time_left_percentage)
+	$Sprite2D.modulate = Color(1, lerp(0.6, 1.0, time_left_percentage), lerp(0.6, 1.0, time_left_percentage))
