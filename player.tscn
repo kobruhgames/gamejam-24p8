@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_4uknh")
 scale = Vector2(3.9375, 3.9375)
 sprite_frames = SubResource("SpriteFrames_v1ls8")
 animation = &"walk_right"
-frame_progress = 0.474983
+frame_progress = 0.994641
 
 [node name="IdleAnimationTimer" type="Timer" parent="."]
 wait_time = 4.0
