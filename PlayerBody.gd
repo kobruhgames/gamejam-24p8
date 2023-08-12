@@ -14,7 +14,7 @@ signal health_lost;
 
 func _physics_process(delta):
 	velocity.y += gravity * delta
-	var dir = Input.get_axis("ui_left", "ui_right")
+	var dir = Input.get_axis("walk_left", "walk_right")
 	if dir != 0:
 		lastDir = dir
 		velocity.x = lerp(velocity.x, dir * speed, acceleration)
@@ -22,7 +22,7 @@ func _physics_process(delta):
 		velocity.x = lerp(velocity.x, 0.0, friction)
 
 	move_and_slide()
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = jump_speed
 
 	if Input.is_action_just_pressed("spawn_bomb"):
