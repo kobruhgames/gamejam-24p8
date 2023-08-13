@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://wmxky0f2hn2q"]
+
+[ext_resource type="PackedScene" uid="uid://clhl883q5ouca" path="res://scenes/components/hurtbox.tscn" id="1_2cnah"]
+[ext_resource type="Texture2D" uid="uid://k7xkydo1s3fi" path="res://art/cat/tileset/cave_tileset.png" id="2_hi7ob"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6x03"]
+atlas = ExtResource("2_hi7ob")
+region = Rect2(198.152, 0.187288, 19.065, 31.4753)
+
+[node name="Spikes" type="Node2D"]
+
+[node name="HurtArea" parent="." instance=ExtResource("1_2cnah")]
+position = Vector2(-9, 5)
+scale = Vector2(0.6, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_j6x03")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-19, 0)
+texture = SubResource("AtlasTexture_j6x03")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(19, 0)
+texture = SubResource("AtlasTexture_j6x03")
