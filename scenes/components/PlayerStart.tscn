@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdibc8pidcbh4"]
+[gd_scene load_steps=21 format=3 uid="uid://cdibc8pidcbh4"]
 
 [ext_resource type="Script" path="res://scenes/components/PlayerStart.gd" id="1_c4iir"]
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="2_2rwug"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cd6r6n06eb0n1" path="res://art/cat/walk/cat_walk_right_1.png" id="15_nrupf"]
 [ext_resource type="Texture2D" uid="uid://bldbk0irxwoj2" path="res://art/cat/walk/cat_walk_right_2.png" id="16_x6pr1"]
 [ext_resource type="Texture2D" uid="uid://bgoemfg17udyw" path="res://art/cat/walk/cat_walk_right_3.png" id="17_8vm6r"]
-[ext_resource type="AudioStream" uid="uid://w3hi0phmckub" path="res://music/Fresh Start LOOP.ogg" id="19_tqse0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
 size = Vector2(128, 128)
@@ -167,15 +166,9 @@ grow_vertical = 1
 target1 = NodePath("../Player1")
 target2 = NodePath("../Player2")
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_tqse0")
-volume_db = -10.179
-autoplay = true
-
 [connection signal="bomb_count_changed" from="Player1" to="Player1/bomb_counter" method="set_value"]
 [connection signal="died" from="Player1" to="." method="_on_player_1_died"]
 [connection signal="health_lost" from="Player1" to="Player1/HealthContainer" method="_on_player_body_health_lost"]
 [connection signal="bomb_count_changed" from="Player2" to="Player2/bomb_counter" method="set_value"]
 [connection signal="died" from="Player2" to="." method="_on_player_2_died"]
 [connection signal="health_lost" from="Player2" to="Player2/HealthContainer" method="_on_player_body_health_lost"]
-[connection signal="ready" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_ready"]
