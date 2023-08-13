@@ -35,6 +35,8 @@ func _process(_delta):
 	# Find the zoom that will contain all targets
 	var r = Rect2(position, Vector2.ONE)
 	for target in targets:
+		if target == null:
+			continue
 		r = r.expand(target.position)
 	r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
 	var _d = max(r.size.x, r.size.y)

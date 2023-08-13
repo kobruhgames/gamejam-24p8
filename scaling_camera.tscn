@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chom2dilpeq45"]
+
+[ext_resource type="Script" path="res://scenes/MultiTargetCamera2D.gd" id="1_u5jgm"]
+
+[node name="Camera2D" type="Camera2D"]
+position = Vector2(-529.971, -524.148)
+scale = Vector2(2.1432, 2.1432)
+script = ExtResource("1_u5jgm")
+target2 = NodePath("")
