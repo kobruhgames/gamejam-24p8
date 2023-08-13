@@ -42,14 +42,12 @@ func _physics_process(delta):
 		settled = true
 	move_and_slide()
 
-
 func _on_hurt_timer_timeout():
 	if alive:
 		var bodies = $HurtBox.get_overlapping_bodies()
 		for body in bodies:
 			if body.has_method("receive_enemy_damage"):
 				body.receive_enemy_damage(1)
-
 
 func _on_chase_area_body_entered(body):
 	if body is CharacterBody2D:
