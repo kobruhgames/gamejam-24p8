@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fxtsdyulgipv"
-path="res://.godot/imported/4.png-6363f62935e43c1d515e16705111b4ce.ctex"
+uid="uid://6r8sdm31a44n"
+path="res://.godot/imported/Destructible Objects Sprite Sheet.png-09fce1a8fe01932a3fe02b98f8c2b7df.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/backgrounds/Clouds 5/4.png"
-dest_files=["res://.godot/imported/4.png-6363f62935e43c1d515e16705111b4ce.ctex"]
+source_file="res://art/cat/tileset/Destructible Objects Sprite Sheet.png"
+dest_files=["res://.godot/imported/Destructible Objects Sprite Sheet.png-09fce1a8fe01932a3fe02b98f8c2b7df.ctex"]
 
 [params]
 
