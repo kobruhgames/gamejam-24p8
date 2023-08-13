@@ -166,5 +166,7 @@ grow_vertical = 1
 target1 = NodePath("../Player1")
 target2 = NodePath("../Player2")
 
+[connection signal="bomb_count_changed" from="Player1" to="Player1/bomb_counter" method="set_value"]
 [connection signal="health_lost" from="Player1" to="Player1/HealthContainer" method="_on_player_body_health_lost"]
+[connection signal="bomb_count_changed" from="Player2" to="Player2/bomb_counter" method="set_value"]
 [connection signal="health_lost" from="Player2" to="Player2/HealthContainer" method="_on_player_body_health_lost"]
