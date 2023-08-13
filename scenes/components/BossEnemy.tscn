@@ -1,0 +1,115 @@
+[gd_scene load_steps=14 format=3 uid="uid://c6lw7s4t044j6"]
+
+[ext_resource type="Texture2D" uid="uid://ckxa3wvepml11" path="res://art/free-street-animal-pixel-art-asset-pack/1 Dog/Attack.png" id="1_u1xmk"]
+[ext_resource type="Texture2D" uid="uid://b0tdeh0mrhsn0" path="res://art/free-street-animal-pixel-art-asset-pack/1 Dog/Idle.png" id="2_keldc"]
+[ext_resource type="Script" path="res://scenes/components/hurtbox.gd" id="3_osdve"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l4spb"]
+atlas = ExtResource("1_u1xmk")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pnrqd"]
+atlas = ExtResource("1_u1xmk")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhxn8"]
+atlas = ExtResource("1_u1xmk")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18ocv"]
+atlas = ExtResource("1_u1xmk")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nq7w"]
+atlas = ExtResource("2_keldc")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmu3f"]
+atlas = ExtResource("2_keldc")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qka2t"]
+atlas = ExtResource("2_keldc")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vkyop"]
+atlas = ExtResource("2_keldc")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2c52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l4spb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pnrqd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhxn8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18ocv")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nq7w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmu3f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qka2t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vkyop")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp54a"]
+size = Vector2(102, 39)
+
+[node name="BossEnemy" type="Node2D"]
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -48)
+scale = Vector2(2.93476, 3.0815)
+sprite_frames = SubResource("SpriteFrames_r2c52")
+animation = &"attack"
+autoplay = "attack"
+frame = 2
+frame_progress = 0.507055
+flip_h = true
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-27, -32)
+scale = Vector2(2.93476, 3.0815)
+sprite_frames = SubResource("SpriteFrames_r2c52")
+animation = &"attack"
+autoplay = "attack"
+frame = 2
+frame_progress = 0.507055
+flip_h = true
+
+[node name="HurtArea" type="Area2D" parent="."]
+position = Vector2(-39, 12)
+scale = Vector2(2.04768, 4.37115)
+script = ExtResource("3_osdve")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="HurtArea"]
+position = Vector2(13, -9.5)
+shape = SubResource("RectangleShape2D_vp54a")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="HurtArea"]
+wait_time = 0.1
+autostart = true
+
+[connection signal="timeout" from="HurtArea/Timer" to="HurtArea" method="_on_timeout" flags=18]

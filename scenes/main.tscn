@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://cfw764hpji6uk" path="res://scenes/main_tileset.tres" id="1_b0tbb"]
 [ext_resource type="PackedScene" uid="uid://cdibc8pidcbh4" path="res://scenes/components/PlayerStart.tscn" id="1_nrh2p"]
-[ext_resource type="PackedScene" path="res://scenes/components/hurtbox.tscn" id="2_ovqjd"]
+[ext_resource type="PackedScene" uid="uid://clhl883q5ouca" path="res://scenes/components/hurtbox.tscn" id="2_ovqjd"]
 [ext_resource type="PackedScene" uid="uid://cq85uw43cjteq" path="res://scenes/single_bomb_pickup.tscn" id="5_i5xp2"]
 [ext_resource type="PackedScene" uid="uid://bsuhii80gjs86" path="res://scenes/ratto.tscn" id="5_jn1dv"]
 [ext_resource type="PackedScene" uid="uid://0ada4scki8l6" path="res://scenes/three_bombs_pickup.tscn" id="6_hjynf"]
