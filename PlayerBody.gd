@@ -32,7 +32,7 @@ func is_alive():
 	return health_node.is_alive()
 
 func receive_enemy_damage(amount):
-	health_node.damage(amount)
+	receive_damage(amount)
 
 func receive_damage(_amount):
 	health_node.damage(_amount)

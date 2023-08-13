@@ -222,25 +222,21 @@ offset_bottom = -152.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="rat1" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+[node name="rat1" parent="." instance=ExtResource("5_jn1dv")]
 position = Vector2(-353, -430)
 scale = Vector2(1.64504, 1.64504)
-player = NodePath("../PlayerBody")
 
-[node name="rat2" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+[node name="rat2" parent="." instance=ExtResource("5_jn1dv")]
 position = Vector2(505, -112)
 scale = Vector2(1.64504, 1.64504)
-player = NodePath("../PlayerBody")
 
-[node name="rat3" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+[node name="rat3" parent="." instance=ExtResource("5_jn1dv")]
 position = Vector2(601, -112)
 scale = Vector2(1.64504, 1.64504)
-player = NodePath("../PlayerBody")
 
-[node name="rat4" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_jn1dv")]
+[node name="rat4" parent="." instance=ExtResource("5_jn1dv")]
 position = Vector2(1267, 86)
 scale = Vector2(1.64504, 1.64504)
-player = NodePath("../PlayerBody")
 
 [node name="single_bomb_pickup" parent="." instance=ExtResource("5_i5xp2")]
 position = Vector2(-528, -454)

@@ -1,9 +1,15 @@
-[gd_scene load_steps=20 format=3 uid="uid://bsuhii80gjs86"]
+[gd_scene load_steps=21 format=3 uid="uid://bsuhii80gjs86"]
 
 [ext_resource type="Texture2D" uid="uid://dm6m2hlb1spu0" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Death.png" id="1_1yf0s"]
 [ext_resource type="Script" path="res://scenes/ratto.gd" id="1_tx0af"]
 [ext_resource type="Texture2D" uid="uid://hxk67njwj3w2" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Idle.png" id="2_ws052"]
 [ext_resource type="Texture2D" uid="uid://dgpe7rum1h6as" path="res://art/free-street-animal-pixel-art-asset-pack/5 Rat/Walk.png" id="3_mh4p6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dw5f1"]
+radius = 161.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bbydr"]
+radius = 18.2483
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s3rkx"]
 size = Vector2(22, 10)
@@ -110,9 +116,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_bbydr"]
-radius = 18.2483
-
 [node name="CharacterBody2D" type="CharacterBody2D"]
 collision_layer = 3
 collision_mask = 3
@@ -120,6 +123,21 @@ script = ExtResource("1_tx0af")
 
 [node name="HurtTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="ChaseArea" type="Area2D" parent="."]
+light_mask = 4
+visibility_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
+shape = SubResource("CircleShape2D_dw5f1")
+debug_color = Color(0.862745, 0.623529, 0, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 8)
+shape = SubResource("CircleShape2D_bbydr")
+debug_color = Color(0.988235, 0.0941176, 0, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 11)
@@ -130,10 +148,6 @@ sprite_frames = SubResource("SpriteFrames_1i1ju")
 animation = &"death"
 autoplay = "idle"
 
-[node name="HurtBox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtBox"]
-position = Vector2(-1, 8)
-shape = SubResource("CircleShape2D_bbydr")
-
 [connection signal="timeout" from="HurtTimer" to="." method="_on_hurt_timer_timeout"]
+[connection signal="body_entered" from="ChaseArea" to="." method="_on_chase_area_body_entered"]
+[connection signal="body_exited" from="ChaseArea" to="." method="_on_chase_area_body_exited"]

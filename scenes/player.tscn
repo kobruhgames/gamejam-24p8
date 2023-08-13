@@ -93,6 +93,8 @@ animations = [{
 script = ExtResource("1_3sclm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 5
+visibility_layer = 5
 shape = SubResource("RectangleShape2D_4uknh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
