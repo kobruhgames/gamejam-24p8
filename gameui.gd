@@ -2,8 +2,8 @@ extends HBoxContainer
 
 @export var MaxHealth = 4;
 
-var heart_full = preload("res://heart.png")
-var heart_broken = preload("res://heart_broken.png")
+var heart_full = preload("res://heart_atlas_texture.tres")
+var heart_broken = preload("res://heart_empty_atlas_texture.tres")
 
 func _ready():
 	_on_player_body_health_lost(MaxHealth)

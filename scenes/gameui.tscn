@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwwy2u5m56hrc"]
 
 [ext_resource type="Script" path="res://gameui.gd" id="1_gaxrl"]
-[ext_resource type="Texture2D" uid="uid://bl34ca1amy7v2" path="res://heart.png" id="1_rl44h"]
+[ext_resource type="Texture2D" uid="uid://cu2tnj7i7vbx0" path="res://heart_atlas_texture.tres" id="2_se301"]
 
 [node name="HealthContainer" type="HBoxContainer"]
 offset_right = 128.0
@@ -10,15 +10,15 @@ script = ExtResource("1_gaxrl")
 
 [node name="TextureHeart" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_rl44h")
+texture = ExtResource("2_se301")
 stretch_mode = 4
 
 [node name="TextureHeart2" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_rl44h")
+texture = ExtResource("2_se301")
 stretch_mode = 4
 
 [node name="TextureHeart3" type="TextureRect" parent="."]
 layout_mode = 2
-texture = ExtResource("1_rl44h")
+texture = ExtResource("2_se301")
 stretch_mode = 4
