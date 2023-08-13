@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7g13y75h66u6"]
+
+[ext_resource type="Script" path="res://scenes/components/FireBallBody.gd" id="1_0e2c4"]
+[ext_resource type="Texture2D" uid="uid://k7xkydo1s3fi" path="res://art/cat/tileset/cave_tileset.png" id="2_kutyl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sldcr"]
+atlas = ExtResource("2_kutyl")
+region = Rect2(195.161, 32.6882, 24.2289, 30.9179)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fqvn2"]
+
+[node name="FireBall" type="Node2D"]
+
+[node name="FireBallBody" type="CharacterBody2D" parent="."]
+script = ExtResource("1_0e2c4")
+
+[node name="Sprite2D" type="Sprite2D" parent="FireBallBody"]
+texture = SubResource("AtlasTexture_sldcr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FireBallBody"]
+shape = SubResource("CircleShape2D_fqvn2")
+debug_color = Color(0.996078, 0, 0.192157, 0.419608)
