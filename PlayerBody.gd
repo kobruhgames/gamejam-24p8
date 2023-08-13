@@ -48,6 +48,10 @@ func add_bombs(amount):
 	bombs += amount
 	bomb_count_changed.emit(bombs)
 
+func add_health(amount):
+	health_node.heal(amount)
+	health_lost.emit(health_node.current_health)
+
 # =============================
 # PRIVATE
 # =============================

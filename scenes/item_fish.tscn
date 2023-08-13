@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://quj2eq8l7crp"]
+
+[ext_resource type="Script" path="res://scenes/item_fish.gd" id="1_d16fq"]
+[ext_resource type="PackedScene" uid="uid://3ad1nepvxucx" path="res://scenes/health_pickup.tscn" id="1_gterg"]
+[ext_resource type="Texture2D" uid="uid://c2fp67qu4s04g" path="res://art/cat/tileset/grass_tileset.png" id="2_mrbdc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tuvx"]
+atlas = ExtResource("2_mrbdc")
+region = Rect2(159.494, 100.82, 33.8462, 20.1115)
+
+[node name="item_fish" type="Node2D"]
+script = ExtResource("1_d16fq")
+
+[node name="AreaHealth" parent="." instance=ExtResource("1_gterg")]
+scale = Vector2(1.8, 1.16)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_6tuvx")
+
+[connection signal="on_picked_up" from="AreaHealth" to="." method="_on_area_health_on_picked_up"]
