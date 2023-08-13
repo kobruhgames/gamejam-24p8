@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgn1kb5xuewxr"]
+
+[ext_resource type="TileSet" uid="uid://cfw764hpji6uk" path="res://scenes/main_tileset.tres" id="1_b0tbb"]
+[ext_resource type="PackedScene" uid="uid://cdibc8pidcbh4" path="res://scenes/components/PlayerStart.tscn" id="1_nrh2p"]
+[ext_resource type="PackedScene" path="res://scenes/components/hurtbox.tscn" id="2_ovqjd"]
+[ext_resource type="PackedScene" uid="uid://cq85uw43cjteq" path="res://scenes/single_bomb_pickup.tscn" id="5_i5xp2"]
+[ext_resource type="PackedScene" uid="uid://bsuhii80gjs86" path="res://scenes/ratto.tscn" id="5_jn1dv"]
+[ext_resource type="PackedScene" uid="uid://0ada4scki8l6" path="res://scenes/three_bombs_pickup.tscn" id="6_hjynf"]
+[ext_resource type="PackedScene" uid="uid://quj2eq8l7crp" path="res://scenes/item_fish.tscn" id="7_jaiw3"]
+[ext_resource type="PackedScene" uid="uid://ckphe5u0os8p3" path="res://scenes/components/SceneChangeHole.tscn" id="8_c7jeg"]
+[ext_resource type="PackedScene" uid="uid://dymw7asuahhdn" path="res://scenes/test_level_cave.tscn" id="9_6owq7"]
+
+[node name="test_level_grass" type="Node2D"]
+position = Vector2(802, 672)
+
+[node name="world" type="Node2D" parent="."]
+position = Vector2(-675, -307)
+
+[node name="PlayerStart" parent="world" instance=ExtResource("1_nrh2p")]
+position = Vector2(-74, -163)
+
+[node name="TileMap" type="TileMap" parent="world"]
+position = Vector2(-35, -65)
+tile_set = ExtResource("1_b0tbb")
+format = 2
+layer_0/name = "foreground"
+
+[node name="HurtArea" parent="world" instance=ExtResource("2_ovqjd")]
+position = Vector2(2171, 450)
+scale = Vector2(3.53026, 1.36252)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="rat1" parent="Enemies" instance=ExtResource("5_jn1dv")]
+position = Vector2(-410, -479)
+scale = Vector2(1.64504, 1.64504)
+
+[node name="rat2" parent="Enemies" instance=ExtResource("5_jn1dv")]
+position = Vector2(505, -112)
+scale = Vector2(1.64504, 1.64504)
+
+[node name="rat3" parent="Enemies" instance=ExtResource("5_jn1dv")]
+position = Vector2(601, -112)
+scale = Vector2(1.64504, 1.64504)
+
+[node name="rat4" parent="Enemies" instance=ExtResource("5_jn1dv")]
+position = Vector2(1131, 35)
+scale = Vector2(1.64504, 1.64504)
+
+[node name="pickups" type="Node2D" parent="."]
+
+[node name="single_bomb_pickup" parent="pickups" instance=ExtResource("5_i5xp2")]
+position = Vector2(-528, -454)
+
+[node name="single_bomb_pickup2" parent="pickups" instance=ExtResource("5_i5xp2")]
+position = Vector2(-410, -615)
+
+[node name="single_bomb_pickup3" parent="pickups" instance=ExtResource("5_i5xp2")]
+position = Vector2(-286, -614)
+
+[node name="single_bomb_pickup4" parent="pickups" instance=ExtResource("5_i5xp2")]
+position = Vector2(76, -584)
+
+[node name="single_bomb_pickup5" parent="pickups" instance=ExtResource("6_hjynf")]
+position = Vector2(86, -330)
+
+[node name="item_fish" parent="." instance=ExtResource("7_jaiw3")]
+position = Vector2(688, -552)
+
+[node name="SceneChangeKey" parent="." instance=ExtResource("8_c7jeg")]
+position = Vector2(1309, 74)
+scale = Vector2(2.10112, 2.10112)
+NextScene = ExtResource("9_6owq7")
