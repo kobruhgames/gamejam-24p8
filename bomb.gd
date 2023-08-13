@@ -6,7 +6,6 @@ func _ready():
 func _on_timer_finished():
 	$Particles.emitting = true
 	var bodies = $ExplosionRadius.get_overlapping_bodies()
-	print(bodies)
 	for body in bodies:
 		if body.has_method("receive_damage"):
 			body.receive_damage(1)

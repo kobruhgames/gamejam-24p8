@@ -24,6 +24,7 @@ var original_color;
 
 signal health_lost;
 signal bomb_count_changed;
+signal died;
 
 # =============================
 # PUBLIC
@@ -59,6 +60,7 @@ func _ready():
 	original_color = $AnimatedSprite2D.modulate
 
 func _on_health_reached_zero():
+	died.emit()
 	$AnimatedSprite2D.stop()
 	$IdleAnimationTimer.stop()
 	$AnimatedSprite2D.connect("animation_looped", queue_free)
