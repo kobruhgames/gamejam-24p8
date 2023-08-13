@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5ad0c2l5bsv5"
+path="res://.godot/imported/Victory Theme.ogg-9129e068ef10a6d203dca497d77b861e.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Victory Theme.ogg"
+dest_files=["res://.godot/imported/Victory Theme.ogg-9129e068ef10a6d203dca497d77b861e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://w3hi0phmckub"
+path="res://.godot/imported/Fresh Start LOOP.ogg-56cc016ddb6cdab7dc5579e9b756532b.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Fresh Start LOOP.ogg"
+dest_files=["res://.godot/imported/Fresh Start LOOP.ogg-56cc016ddb6cdab7dc5579e9b756532b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

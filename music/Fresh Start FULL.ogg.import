@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c50hrwrhsvdel"
+path="res://.godot/imported/Fresh Start FULL.ogg-ea6457fa866d76c44abde3bfa5d03d0f.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Fresh Start FULL.ogg"
+dest_files=["res://.godot/imported/Fresh Start FULL.ogg-ea6457fa866d76c44abde3bfa5d03d0f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cf4klu3ugmun0"
+path="res://.godot/imported/Time Is Near LOOP.ogg-61c50a85769f261c8fa3337e2d817f5f.oggvorbisstr"
+
+[deps]
+
+source_file="res://music/Time Is Near LOOP.ogg"
+dest_files=["res://.godot/imported/Time Is Near LOOP.ogg-61c50a85769f261c8fa3337e2d817f5f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

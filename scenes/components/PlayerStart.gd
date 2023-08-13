@@ -1,5 +1,7 @@
 extends Node2D
 
+@export var music : AudioStream
+
 var p1_live = true
 var p2_live = true
 
@@ -18,3 +20,4 @@ func _on_player_2_died():
 func _on_player_1_died():
 	if p2_live == false:
 		get_tree().quit()
+
