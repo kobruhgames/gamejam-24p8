@@ -1,10 +1,98 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdibc8pidcbh4"]
+[gd_scene load_steps=21 format=3 uid="uid://cdibc8pidcbh4"]
 
 [ext_resource type="Script" path="res://scenes/components/PlayerStart.gd" id="1_c4iir"]
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="2_2rwug"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="3_sdi70"]
 [ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="4_0aptj"]
 [ext_resource type="PackedScene" path="res://scaling_camera.tscn" id="5_j5lb5"]
+[ext_resource type="Script" path="res://PlayerBody.gd" id="5_sj17m"]
+[ext_resource type="Texture2D" uid="uid://bkmqd6knaudrk" path="res://art/cat/death/cat_death_1_right.png" id="6_m20sl"]
+[ext_resource type="Texture2D" uid="uid://c72gmghpwxsve" path="res://art/cat/death/cat_death_2_right.png" id="7_7p2wk"]
+[ext_resource type="Texture2D" uid="uid://b5kg6o3u20h1k" path="res://art/cat/death/cat_death_3_right.png" id="8_fhgyh"]
+[ext_resource type="Texture2D" uid="uid://6n0s61xp1reb" path="res://art/cat/death/cat_death_4_right.png" id="9_7udxi"]
+[ext_resource type="Texture2D" uid="uid://bknmw22hmmsat" path="res://art/cat/run/cat_run_right_3.png" id="10_7semr"]
+[ext_resource type="Texture2D" uid="uid://161cx50kkxy" path="res://art/cat/run/cat_run_right_2.png" id="11_c12me"]
+[ext_resource type="Texture2D" uid="uid://wiy5wmivjdvp" path="res://art/cat/run/cat_run_right_1.png" id="12_eg0ad"]
+[ext_resource type="Texture2D" uid="uid://b8ba8gtq7p8ru" path="res://art/cat/sit/cat_sit_right_1.png" id="13_jrvx6"]
+[ext_resource type="Texture2D" uid="uid://c6wf0xp6k6u8s" path="res://art/cat/sit/cat_sit_right_forward.png" id="14_5suq6"]
+[ext_resource type="Texture2D" uid="uid://cd6r6n06eb0n1" path="res://art/cat/walk/cat_walk_right_1.png" id="15_nrupf"]
+[ext_resource type="Texture2D" uid="uid://bldbk0irxwoj2" path="res://art/cat/walk/cat_walk_right_2.png" id="16_x6pr1"]
+[ext_resource type="Texture2D" uid="uid://bgoemfg17udyw" path="res://art/cat/walk/cat_walk_right_3.png" id="17_8vm6r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4uknh"]
+size = Vector2(128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v1ls8"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("6_m20sl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7p2wk")
+}, {
+"duration": 4.0,
+"texture": ExtResource("8_fhgyh")
+}, {
+"duration": 10.0,
+"texture": ExtResource("9_7udxi")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7semr")
+}],
+"loop": true,
+"name": &"jump_down_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_c12me")
+}],
+"loop": true,
+"name": &"jump_peak_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_eg0ad")
+}],
+"loop": true,
+"name": &"jump_up_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_jrvx6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_5suq6")
+}],
+"loop": true,
+"name": &"sit_right",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_nrupf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_x6pr1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_8vm6r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_x6pr1")
+}],
+"loop": true,
+"name": &"walk_right",
+"speed": 8.0
+}]
 
 [node name="PlayerStart" type="Node2D"]
 script = ExtResource("1_c4iir")
@@ -32,12 +120,30 @@ offset_bottom = -144.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Player2" parent="." instance=ExtResource("2_2rwug")]
+[node name="Player2" type="CharacterBody2D" parent="."]
 position = Vector2(-68, 0)
 scale = Vector2(0.5, 0.5)
+script = ExtResource("5_sj17m")
 speed = 500
 jump_speed = -1000
 gravity = 3000
+player = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+light_mask = 5
+visibility_layer = 5
+shape = SubResource("RectangleShape2D_4uknh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player2"]
+scale = Vector2(3.9375, 3.9375)
+sprite_frames = SubResource("SpriteFrames_v1ls8")
+animation = &"death"
+autoplay = "sit_right"
+frame_progress = 0.386856
+
+[node name="IdleAnimationTimer" type="Timer" parent="Player2"]
+wait_time = 4.0
+autostart = true
 
 [node name="HealthContainer" parent="Player2" instance=ExtResource("3_sdi70")]
 offset_left = -62.0
