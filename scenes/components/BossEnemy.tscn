@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6lw7s4t044j6"]
+[gd_scene load_steps=18 format=3 uid="uid://c6lw7s4t044j6"]
 
+[ext_resource type="Script" path="res://scenes/components/BossEnemy.gd" id="1_8w615"]
 [ext_resource type="Texture2D" uid="uid://ckxa3wvepml11" path="res://art/free-street-animal-pixel-art-asset-pack/1 Dog/Attack.png" id="1_u1xmk"]
 [ext_resource type="Texture2D" uid="uid://b0tdeh0mrhsn0" path="res://art/free-street-animal-pixel-art-asset-pack/1 Dog/Idle.png" id="2_keldc"]
 [ext_resource type="Script" path="res://scenes/components/hurtbox.gd" id="3_osdve"]
+[ext_resource type="Script" path="res://scenes/components/BossBody.gd" id="4_u4wyg"]
+[ext_resource type="PackedScene" uid="uid://cm54fmbmjfps7" path="res://scenes/components/health.tscn" id="6_qwjnr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l4spb"]
 atlas = ExtResource("1_u1xmk")
@@ -76,7 +79,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp54a"]
 size = Vector2(102, 39)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83x4e"]
+size = Vector2(150, 126)
+
 [node name="BossEnemy" type="Node2D"]
+script = ExtResource("1_8w615")
 
 [node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -48)
@@ -99,12 +106,12 @@ frame_progress = 0.507055
 flip_h = true
 
 [node name="HurtArea" type="Area2D" parent="."]
-position = Vector2(-39, 12)
-scale = Vector2(2.04768, 4.37115)
+position = Vector2(-224, 9.53674e-07)
+scale = Vector2(0.647682, 4.37115)
 script = ExtResource("3_osdve")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="HurtArea"]
-position = Vector2(13, -9.5)
+position = Vector2(172.924, -9.83724)
 shape = SubResource("RectangleShape2D_vp54a")
 debug_color = Color(1, 0, 0, 0.419608)
 
@@ -112,4 +119,18 @@ debug_color = Color(1, 0, 0, 0.419608)
 wait_time = 0.1
 autostart = true
 
+[node name="BossBody" type="StaticBody2D" parent="."]
+script = ExtResource("4_u4wyg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BossBody"]
+position = Vector2(0, -22)
+shape = SubResource("RectangleShape2D_83x4e")
+debug_color = Color(0.364706, 0.611765, 0.239216, 0.419608)
+
+[node name="health" parent="." instance=ExtResource("6_qwjnr")]
+max_health = 5
+current_health = 5
+
 [connection signal="timeout" from="HurtArea/Timer" to="HurtArea" method="_on_timeout" flags=18]
+[connection signal="got_hit" from="BossBody" to="health" method="damage"]
+[connection signal="health_reached_zero" from="health" to="." method="_on_health_health_reached_zero"]
