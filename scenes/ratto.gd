@@ -10,7 +10,7 @@ var settled = false
 
 @export var player : CharacterBody2D
 
-func receive_damage(amount):
+func receive_damage(_amount):
 	$AnimatedSprite2D.stop()
 	$AnimatedSprite2D.connect("animation_looped", _on_death_anim_end)
 	$AnimatedSprite2D.play("death")

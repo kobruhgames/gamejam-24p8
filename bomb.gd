@@ -12,6 +12,6 @@ func _on_timer_finished():
 	await get_tree().create_timer(0.2).timeout
 	queue_free()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var time_left_percentage = $Timer.get_time_left() / $Timer.get_wait_time()
 	$Sprite2D.modulate = Color(1, lerp(0.6, 1.0, time_left_percentage), lerp(0.6, 1.0, time_left_percentage))

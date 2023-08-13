@@ -1,5 +1,9 @@
 extends CharacterBody2D
 
+var HealthNodeScene = preload("res://scenes/components/health.tscn")
+
+var health_node : Node2D
+
 @export var health = 4
 @export var bombs = 3
 @export var speed = 1200
@@ -25,24 +29,17 @@ signal bomb_count_changed;
 # PUBLIC
 # =============================
 func is_alive():
-	return health > 0
+	return health_node.is_alive()
 
 func receive_enemy_damage(amount):
-	if health > 0:
-		receive_damage(amount)
+	health_node.damage(amount)
 
-func receive_damage(amount):
-	health -= amount
-	health_lost.emit(health)
-	if health <= 0:
-		$AnimatedSprite2D.stop()
-		$IdleAnimationTimer.stop()
-		$AnimatedSprite2D.connect("animation_looped", queue_free)
-		$AnimatedSprite2D.play("death")
-	else:
-		var tween = get_tree().create_tween()
-		tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 0, 0, 0.5), 0.1)
-		tween.tween_property($AnimatedSprite2D, "modulate", original_color, 0.1).set_delay(0.1)
+func receive_damage(_amount):
+	health_node.damage(_amount)
+	health_lost.emit(health_node.current_health)
+	var tween = get_tree().create_tween()
+	tween.tween_property($AnimatedSprite2D, "modulate", Color(1, 0, 0, 0.5), 0.1)
+	tween.tween_property($AnimatedSprite2D, "modulate", original_color, 0.1).set_delay(0.1)
 
 func add_bombs(amount):
 	bombs += amount
@@ -52,15 +49,25 @@ func add_bombs(amount):
 # PRIVATE
 # =============================
 func _ready():
+	health_node = HealthNodeScene.instantiate()
+	add_child(health_node)
+	health_node.connect("health_reached_zero", _on_health_reached_zero)
+
 	$IdleAnimationTimer.connect("timeout", _on_idle_triggered)
 	original_color = $AnimatedSprite2D.modulate
 	default_scale = $AnimatedSprite2D.scale
+
+func _on_health_reached_zero():
+	$AnimatedSprite2D.stop()
+	$IdleAnimationTimer.stop()
+	$AnimatedSprite2D.connect("animation_looped", queue_free)
+	$AnimatedSprite2D.play("death")
 
 func _physics_process(delta):
 	_apply_gravity(delta)
 	var input_horizontal_direction = _read_input_horizontal_direction()
 	
-	if health > 0:
+	if health_node.is_alive():
 		_update_animation(input_horizontal_direction, delta)
 		if input_horizontal_direction == HORIZONTAL_DIR_STOP:
 			_apply_stop_force()
@@ -82,7 +89,6 @@ func _read_input_horizontal_direction():
 	return new_direction
 
 func _update_animation(horizontal_direction, delta):
-	var non_g_velocity = velocity.y - gravity * delta;
 	if is_on_floor() == false && velocity.y < -PEAK_FRAME_DURATION:
 		$AnimatedSprite2D.play("jump_up_right")
 	elif is_on_floor() == false && velocity.y > PEAK_FRAME_DURATION:
