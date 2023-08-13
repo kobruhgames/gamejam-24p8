@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://diol5j3b8e4k8"]
 
+[ext_resource type="Texture2D" uid="uid://bhgtevlywoeva" path="res://scenes/origbig.png" id="1_sqdpw"]
 [ext_resource type="PackedScene" uid="uid://cuxa5dh7j21nu" path="res://scenes/menu/components/SceneButton.tscn" id="1_ybu4x"]
-[ext_resource type="PackedScene" uid="uid://dymw7asuahhdn" path="res://scenes/test_level_cave.tscn" id="2_2liwe"]
-[ext_resource type="PackedScene" uid="uid://cgn1kb5xuewxr" path="res://scenes/main.tscn" id="2_sabm6"]
+[ext_resource type="PackedScene" uid="uid://cgn1kb5xuewxr" path="res://scenes/test_level_grass.tscn" id="3_tc2b6"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -12,6 +12,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="background" type="Sprite2D" parent="Node2D"]
+position = Vector2(575.889, 320.5)
+scale = Vector2(0.500772, 0.500772)
+texture = ExtResource("1_sqdpw")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -19,6 +26,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -28,7 +36,7 @@ size_flags_vertical = 4
 [node name="SceneButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_ybu4x")]
 layout_mode = 2
 text = "New Game"
-NextScene = ExtResource("2_2liwe")
+NextScene = ExtResource("3_tc2b6")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -38,5 +46,5 @@ size_flags_vertical = 4
 [node name="SceneButton2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_ybu4x")]
 layout_mode = 2
 text = "Exit Game"
-NextScene = ExtResource("2_sabm6")
+NextScene = ExtResource("3_tc2b6")
 ExitsGame = true
