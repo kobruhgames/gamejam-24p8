@@ -35,6 +35,8 @@ func receive_enemy_damage(amount):
 	receive_damage(amount)
 
 func receive_damage(_amount):
+	if is_alive() == false:
+		return
 	health_node.damage(_amount)
 	health_lost.emit(health_node.current_health)
 	var tween = get_tree().create_tween()
