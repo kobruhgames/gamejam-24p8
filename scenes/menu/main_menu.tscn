@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://diol5j3b8e4k8"]
+[gd_scene load_steps=4 format=3 uid="uid://diol5j3b8e4k8"]
 
 [ext_resource type="PackedScene" uid="uid://cuxa5dh7j21nu" path="res://scenes/menu/components/SceneButton.tscn" id="1_ybu4x"]
+[ext_resource type="PackedScene" uid="uid://dymw7asuahhdn" path="res://scenes/test_level_cave.tscn" id="2_2liwe"]
 [ext_resource type="PackedScene" uid="uid://cgn1kb5xuewxr" path="res://scenes/main.tscn" id="2_sabm6"]
 
 [node name="main_menu" type="Control"]
@@ -26,18 +27,8 @@ size_flags_vertical = 4
 
 [node name="SceneButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_ybu4x")]
 layout_mode = 2
-text = "New Game (1 player)"
-NextScene = ExtResource("2_sabm6")
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer3"]
-layout_mode = 2
-disabled = true
-text = "New Game (2 players)"
+text = "New Game"
+NextScene = ExtResource("2_2liwe")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

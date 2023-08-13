@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="2_2rwug"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="3_sdi70"]
 [ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="4_0aptj"]
-[ext_resource type="PackedScene" path="res://scaling_camera.tscn" id="5_j5lb5"]
+[ext_resource type="PackedScene" uid="uid://chom2dilpeq45" path="res://scaling_camera.tscn" id="5_j5lb5"]
 [ext_resource type="Script" path="res://PlayerBody.gd" id="5_sj17m"]
 [ext_resource type="Texture2D" uid="uid://bkmqd6knaudrk" path="res://art/cat/death/cat_death_1_right.png" id="6_m20sl"]
 [ext_resource type="Texture2D" uid="uid://c72gmghpwxsve" path="res://art/cat/death/cat_death_2_right.png" id="7_7p2wk"]
@@ -165,3 +165,6 @@ grow_vertical = 1
 [node name="scaling camera" parent="." node_paths=PackedStringArray("target1", "target2") instance=ExtResource("5_j5lb5")]
 target1 = NodePath("../Player1")
 target2 = NodePath("../Player2")
+
+[connection signal="health_lost" from="Player1" to="Player1/HealthContainer" method="_on_player_body_health_lost"]
+[connection signal="health_lost" from="Player2" to="Player2/HealthContainer" method="_on_player_body_health_lost"]
