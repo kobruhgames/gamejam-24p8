@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cktsl0atl0s2r"]
 
-[ext_resource type="TileSet" uid="uid://ld67mcvkh2yd" path="res://scenes/main_tileset.tres" id="1_t7ftn"]
+[ext_resource type="TileSet" uid="uid://cfw764hpji6uk" path="res://scenes/main_tileset.tres" id="1_t7ftn"]
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="3_lt71i"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="4_3bwnr"]
 [ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="5_aodn8"]

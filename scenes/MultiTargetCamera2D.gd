@@ -24,19 +24,21 @@ func _ready():
 func _process(_delta):
 	if !targets:
 		return
+	var i = 0
+	while i < targets.size():
+		if targets[i] == null or targets[i].is_queued_for_deletion():
+			targets.remove_at(i)
+		else:
+			i += 1
 	# Keep the camera centered between the targets
 	var p = Vector2.ZERO
 	for target in targets:
-		if target == null:
-			continue
 		p += target.position
 	p /= targets.size()
 	position = lerp(position, p, move_speed)
 	# Find the zoom that will contain all targets
 	var r = Rect2(position, Vector2.ONE)
 	for target in targets:
-		if target == null:
-			continue
 		r = r.expand(target.position)
 	r = r.grow_individual(margin.x, margin.y, margin.x, margin.y)
 	var _d = max(r.size.x, r.size.y)
