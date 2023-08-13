@@ -1,7 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b7g13y75h66u6"]
+[gd_scene load_steps=7 format=3 uid="uid://b7g13y75h66u6"]
 
 [ext_resource type="Script" path="res://scenes/components/FireBallBody.gd" id="1_0e2c4"]
 [ext_resource type="Texture2D" uid="uid://k7xkydo1s3fi" path="res://art/cat/tileset/cave_tileset.png" id="2_kutyl"]
+[ext_resource type="Script" path="res://scenes/components/hurtbox.gd" id="2_x0pjj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp54a"]
+size = Vector2(102, 39)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sldcr"]
 atlas = ExtResource("2_kutyl")
@@ -14,9 +18,25 @@ region = Rect2(195.161, 32.6882, 24.2289, 30.9179)
 [node name="FireBallBody" type="CharacterBody2D" parent="."]
 script = ExtResource("1_0e2c4")
 
+[node name="HurtArea" type="Area2D" parent="FireBallBody"]
+position = Vector2(-3, 2)
+scale = Vector2(0.28, 0.920001)
+script = ExtResource("2_x0pjj")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="FireBallBody/HurtArea"]
+position = Vector2(13, -9.5)
+shape = SubResource("RectangleShape2D_vp54a")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="FireBallBody/HurtArea"]
+wait_time = 0.1
+autostart = true
+
 [node name="Sprite2D" type="Sprite2D" parent="FireBallBody"]
 texture = SubResource("AtlasTexture_sldcr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FireBallBody"]
 shape = SubResource("CircleShape2D_fqvn2")
 debug_color = Color(0.996078, 0, 0.192157, 0.419608)
+
+[connection signal="timeout" from="FireBallBody/HurtArea/Timer" to="FireBallBody/HurtArea" method="_on_timeout" flags=18]
