@@ -1,10 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://cphxjx33bck72"]
+[gd_scene load_steps=6 format=3 uid="uid://cdibc8pidcbh4"]
 
 [ext_resource type="Script" path="res://scenes/components/PlayerStart.gd" id="1_c4iir"]
 [ext_resource type="PackedScene" uid="uid://dppn2x537dskf" path="res://scenes/player.tscn" id="2_2rwug"]
 [ext_resource type="PackedScene" uid="uid://dwwy2u5m56hrc" path="res://scenes/gameui.tscn" id="3_sdi70"]
 [ext_resource type="PackedScene" uid="uid://c60w5ehcy7765" path="res://scenes/bomb_counter.tscn" id="4_0aptj"]
-[ext_resource type="PackedScene" uid="uid://chom2dilpeq45" path="res://scaling_camera.tscn" id="5_j5lb5"]
+[ext_resource type="PackedScene" path="res://scaling_camera.tscn" id="5_j5lb5"]
 
 [node name="PlayerStart" type="Node2D"]
 script = ExtResource("1_c4iir")
@@ -13,6 +13,7 @@ script = ExtResource("1_c4iir")
 scale = Vector2(0.5, 0.5)
 speed = 500
 jump_speed = -1000
+gravity = 3000
 
 [node name="HealthContainer" parent="Player1" instance=ExtResource("3_sdi70")]
 offset_left = -62.0
@@ -36,7 +37,7 @@ position = Vector2(-68, 0)
 scale = Vector2(0.5, 0.5)
 speed = 500
 jump_speed = -1000
-player = 2
+gravity = 3000
 
 [node name="HealthContainer" parent="Player2" instance=ExtResource("3_sdi70")]
 offset_left = -62.0
