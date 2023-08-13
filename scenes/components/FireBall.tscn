@@ -13,30 +13,28 @@ region = Rect2(195.161, 32.6882, 24.2289, 30.9179)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fqvn2"]
 
-[node name="FireBall" type="Node2D"]
-
-[node name="FireBallBody" type="CharacterBody2D" parent="."]
+[node name="FireBallBody" type="CharacterBody2D"]
 script = ExtResource("1_0e2c4")
 
-[node name="HurtArea" type="Area2D" parent="FireBallBody"]
+[node name="HurtArea" type="Area2D" parent="."]
 position = Vector2(-3, 2)
 scale = Vector2(0.28, 0.920001)
 script = ExtResource("2_x0pjj")
 
-[node name="CollisionShape" type="CollisionShape2D" parent="FireBallBody/HurtArea"]
+[node name="CollisionShape" type="CollisionShape2D" parent="HurtArea"]
 position = Vector2(13, -9.5)
 shape = SubResource("RectangleShape2D_vp54a")
 debug_color = Color(1, 0, 0, 0.419608)
 
-[node name="Timer" type="Timer" parent="FireBallBody/HurtArea"]
+[node name="Timer" type="Timer" parent="HurtArea"]
 wait_time = 0.1
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="FireBallBody"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_sldcr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FireBallBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_fqvn2")
 debug_color = Color(0.996078, 0, 0.192157, 0.419608)
 
-[connection signal="timeout" from="FireBallBody/HurtArea/Timer" to="FireBallBody/HurtArea" method="_on_timeout" flags=18]
+[connection signal="timeout" from="HurtArea/Timer" to="HurtArea" method="_on_timeout" flags=18]
