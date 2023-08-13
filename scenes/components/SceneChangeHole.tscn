@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckphe5u0os8p3"]
+
+[ext_resource type="Script" path="res://scenes/components/SceneChangeKey.gd" id="1_gfulr"]
+[ext_resource type="Texture2D" uid="uid://c2fp67qu4s04g" path="res://art/cat/tileset/grass_tileset.png" id="2_l6gsq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xe4wt"]
+atlas = ExtResource("2_l6gsq")
+region = Rect2(195.024, 96.0805, 26.2153, 31.7557)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok1sk"]
+size = Vector2(39, 31)
+
+[node name="SceneChangeKey" type="Node2D"]
+script = ExtResource("1_gfulr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_xe4wt")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_ok1sk")
+debug_color = Color(0.239216, 0.619608, 0.427451, 0.419608)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
