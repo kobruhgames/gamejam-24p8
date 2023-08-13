@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://clhl883q5ouca"]
+
+[ext_resource type="Script" path="res://scenes/components/hurtbox.gd" id="1_30xnr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp54a"]
+size = Vector2(102, 39)
+
+[node name="HurtArea" type="Area2D"]
+script = ExtResource("1_30xnr")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(13, -9.5)
+shape = SubResource("RectangleShape2D_vp54a")
+debug_color = Color(1, 0, 0, 0.419608)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timeout"]
