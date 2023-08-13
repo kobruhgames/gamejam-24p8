@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://diol5j3b8e4k8"]
+
+[ext_resource type="PackedScene" uid="uid://cuxa5dh7j21nu" path="res://scenes/menu/components/SceneButton.tscn" id="1_ybu4x"]
+[ext_resource type="PackedScene" uid="uid://cgn1kb5xuewxr" path="res://scenes/main.tscn" id="2_sabm6"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SceneButton" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_ybu4x")]
+layout_mode = 2
+text = "New Game (1 player)"
+NextScene = ExtResource("2_sabm6")
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+disabled = true
+text = "New Game (2 players)"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SceneButton2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_ybu4x")]
+layout_mode = 2
+text = "Exit Game"
+NextScene = ExtResource("2_sabm6")
+ExitsGame = true
