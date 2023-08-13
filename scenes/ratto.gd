@@ -28,7 +28,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 
 	if alive:
-		var direction = sign(target.transform.origin.x - self.transform.origin.x)
+		var direction = -sign(target.transform.origin.x - transform.origin.x)
 
 		$AnimatedSprite2D.play("walk")
 		$AnimatedSprite2D.flip_h = direction < 0
@@ -50,7 +50,7 @@ func _on_hurt_timer_timeout():
 				body.receive_enemy_damage(1)
 
 func _on_chase_area_body_entered(body):
-	if body is CharacterBody2D:
+	if body.has_method("receive_enemy_damage"):
 		target = body
 
 func _on_chase_area_body_exited(body):
